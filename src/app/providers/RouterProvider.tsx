@@ -4,15 +4,10 @@ import {
   redirect,
   useRouteError,
 } from 'react-router-dom';
-import { articlePageRoute } from '~pages/article';
-import { editorPageRoute } from '~pages/editor';
 import { homePageRoute } from '~pages/home';
 import { GuestLayout, NakedLayout, GenericLayout } from '~pages/layouts';
 import { loginPageRoute } from '~pages/login';
 import { page404Route } from '~pages/page-404';
-import { profilePageRoute } from '~pages/profile';
-import { registerPageRoute } from '~pages/register';
-import { settingsPageRoute } from '~pages/settings';
 import { pathKeys } from '~shared/lib/react-router';
 
 // https://github.com/remix-run/react-router/discussions/10166
@@ -28,17 +23,12 @@ const router = createBrowserRouter([
     children: [
       {
         element: <GenericLayout />,
-        children: [
-          editorPageRoute,
-          settingsPageRoute,
-          homePageRoute,
-          articlePageRoute,
-          profilePageRoute,
-        ],
+        children: [homePageRoute],
       },
       {
         element: <GuestLayout />,
-        children: [loginPageRoute, registerPageRoute],
+        children: [loginPageRoute],
+        // children: [loginPageRoute, registerPageRoute],
       },
       {
         element: <NakedLayout />,
