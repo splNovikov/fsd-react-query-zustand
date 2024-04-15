@@ -1,5 +1,3 @@
 export type UnexpectedErrorDto = {
-  errors: {
-    body: string[];
-  };
+  error: string;
 };

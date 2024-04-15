@@ -10,6 +10,16 @@ export const UserDtoSchema = z.object({
   }),
 });
 
+// createdAt : "2024-04-15T13:20:07.622Z"
+// email : "123@gmail.com"
+// firstName : "Pavel"
+// id : "e02b296b-408c-4949-a2c1-3d64b5f5e5e1"
+// lastName : "Novikov"
+// password : "123123123"
+// phone : "+79085550606"
+// sub : "078fd223-ce01-4a77-991d-3b4b67928b66"
+// updatedAt: "2024-04-15T13:20:07.622Z"
+
 export const UpdateUserDtoSchema = z
   .object({
     email: z.string().email().optional().or(z.literal('')),
@@ -25,9 +35,11 @@ export const UpdateUserDtoSchema = z
   });
 
 export const CreateUserDtoSchema = z.object({
-  username: z.string().min(5),
+  firstName: z.string().min(3),
+  lastName: z.string().min(3),
   email: z.string().email(),
   password: z.string().min(8),
+  phone: z.string(),
 });
 
 export const LoginUserDtoSchema = z.object({

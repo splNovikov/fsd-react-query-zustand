@@ -1,4 +1,4 @@
-import { baseUrl } from '~shared/api/ocus-pocus';
+import { iamUrl } from '~shared/api/ocus-pocus';
 import { createJsonMutation, createJsonQuery } from '~shared/lib/fetch';
 import { zodContract } from '~shared/lib/zod';
 import { UserDtoSchema } from './session.contracts';
@@ -9,7 +9,7 @@ import { CreateUserDto, LoginUserDto, UpdateUserDto } from './session.types';
 export async function currentUserQuery(signal?: AbortSignal) {
   return createJsonQuery({
     request: {
-      url: baseUrl('/user'),
+      url: iamUrl('/user'),
       method: 'GET',
       headers: { ...authorizationHeader() },
     },
@@ -24,9 +24,9 @@ export async function currentUserQuery(signal?: AbortSignal) {
 export async function createUserMutation(params: { user: CreateUserDto }) {
   return createJsonMutation({
     request: {
-      url: baseUrl('/users'),
+      url: iamUrl('/auth/register'),
       method: 'POST',
-      body: JSON.stringify({ user: params.user }),
+      body: JSON.stringify({ ...params.user }),
     },
     response: {
       contract: zodContract(UserDtoSchema),
@@ -38,9 +38,9 @@ export async function createUserMutation(params: { user: CreateUserDto }) {
 export async function loginUserMutation(params: { user: LoginUserDto }) {
   return createJsonMutation({
     request: {
-      url: baseUrl('/users/login'),
+      url: iamUrl('/auth/login'),
       method: 'POST',
-      body: JSON.stringify({ user: params.user }),
+      body: JSON.stringify({ ...params.user }),
     },
     response: {
       contract: zodContract(UserDtoSchema),
@@ -52,7 +52,7 @@ export async function loginUserMutation(params: { user: LoginUserDto }) {
 export async function updateUserMutation(params: { user: UpdateUserDto }) {
   return createJsonMutation({
     request: {
-      url: baseUrl('/user'),
+      url: iamUrl('/user'),
       method: 'PUT',
       headers: { ...authorizationHeader() },
       body: JSON.stringify({ user: params.user }),

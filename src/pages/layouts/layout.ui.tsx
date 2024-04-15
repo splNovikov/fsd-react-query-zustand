@@ -41,6 +41,9 @@ function GuestNavigation() {
             <NavLink className="nav-link" to={pathKeys.login()}>
               Login
             </NavLink>
+            <NavLink className="nav-link" to={pathKeys.register()}>
+              Register
+            </NavLink>
             <NavLink className="nav-link" to={pathKeys.home()}>
               Home
             </NavLink>

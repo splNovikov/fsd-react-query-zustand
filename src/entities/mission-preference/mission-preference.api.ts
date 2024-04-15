@@ -1,4 +1,4 @@
-import { baseUrl } from '~shared/api/ocus-pocus';
+import { imageCreatorsUrl } from '~shared/api/ocus-pocus';
 import { createJsonQuery } from '~shared/lib/fetch';
 import { zodContract } from '~shared/lib/zod';
 import { MissionPreferencesDtoSchema } from './mission-preference.contracts';
@@ -10,7 +10,7 @@ export async function missionPreferencesQuery(
 ) {
   return createJsonQuery({
     request: {
-      url: baseUrl(
+      url: imageCreatorsUrl(
         '/image-creators/ca7a5540-79e4-4d06-b034-e061c46840fe/mission-preference',
       ),
       method: 'GET',

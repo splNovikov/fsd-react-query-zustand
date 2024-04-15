@@ -8,6 +8,7 @@ import { homePageRoute } from '~pages/home';
 import { GuestLayout, NakedLayout, GenericLayout } from '~pages/layouts';
 import { loginPageRoute } from '~pages/login';
 import { page404Route } from '~pages/page-404';
+import { registerPageRoute } from '~pages/register';
 import { pathKeys } from '~shared/lib/react-router';
 
 // https://github.com/remix-run/react-router/discussions/10166
@@ -27,8 +28,7 @@ const router = createBrowserRouter([
       },
       {
         element: <GuestLayout />,
-        children: [loginPageRoute],
-        // children: [loginPageRoute, registerPageRoute],
+        children: [loginPageRoute, registerPageRoute],
       },
       {
         element: <NakedLayout />,
